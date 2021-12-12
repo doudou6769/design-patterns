@@ -13,11 +13,21 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        // 创建对象
+        // Dog的比较方式限制为只能通过food进行比较
         Dog[] dogs = {new Dog(5), new Dog(1), new Dog(3)};
         // 调用排序方法 使用者无需实现排序算法 只需给出比较2个对象的方式（实现Comparable接口）即可
         Sorter.sort(dogs);
         System.out.println(Arrays.toString(dogs));
+
+        // Cat的比较方式更灵活，可通过比较器控制
+        Cat[] cats = {new Cat(3,5),new Cat(7,2),new Cat(1,3)};
+        // 第一种方式 通过height进行比较
+        Sorter.sort(cats,(c1,c2) -> c1.height - c2.height);
+        System.out.println(Arrays.toString(cats));
+
+        // 第二种方式 通过width进行比较
+        Sorter.sort(cats,(c1,c2) -> c1.width - c2.width);
+        System.out.println(Arrays.toString(cats));
     }
 
 }
